@@ -6,9 +6,5 @@ import { routes } from './app/app.routes';
 import { provideHttpClient } from '@angular/common/http'; // Import this only
 
 bootstrapApplication(AppComponent, appConfig)
-  /*providers: [
-    provideRouter(routes),
-    //provideHttpClient() // Provide HTTP client here
-  ],
-})*/
+  
   .catch((err) => console.error(err));

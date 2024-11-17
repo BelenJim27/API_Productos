@@ -15,10 +15,10 @@ export const routes: Routes = [
     component: SiderbarComponent,
     children: [
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'perfil', component: PerfilComponent },
+      { path: 'usuarios', component: UserListComponent },
       { path: 'tablas', component: TablasComponent },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     ]
   },
-  { path: '**', redirectTo: 'login' }, // Redirige a login si la ruta no existe
+  { path: '**', redirectTo: 'login' }, 
 ];

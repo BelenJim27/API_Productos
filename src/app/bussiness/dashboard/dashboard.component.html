@@ -1,1 +1,17 @@
-<p>dashboard works!</p>
+<mat-grid-list cols="3" rowHeight="300px">
+    <mat-grid-tile *ngFor="let image of images">
+      <mat-card>
+        <img mat-card-image [src]="image.src" [alt]="image.titulo">
+        <mat-card-title>{{ image.titulo }}</mat-card-title>
+        <mat-card-content>
+          <p>{{ image.descripcion }}</p>
+          <p>Precio: {{ image.precio }}</p>
+          <p>Cantidad Disponible: {{ image.cantidad }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="showDetails(image)">Más detalles</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+  

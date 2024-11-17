@@ -5,12 +5,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { signal } from '@angular/core';
-import { FormControl, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';  // Importa CommonModule
 import { Router } from '@angular/router';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { merge } from 'rxjs';
 import { UserService } from '../../services/user.service';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
@@ -19,7 +16,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
   selector: 'app-login',
   standalone: true,
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],  // Cambio de `styleUrl` a `styleUrls`
+  styleUrls: ['./login.component.css'],  
   imports: [
     CommonModule,
     MatCardModule,
@@ -60,9 +57,9 @@ export default class LoginComponent {
       } else {
         console.log("Usuario no encontrado");
         this.snackBar.open('Usuario o contraseña incorrectos', 'Cerrar', {
-          duration: 3000, // Duración en milisegundos
+          duration: 3000, 
           horizontalPosition: 'center',
-          verticalPosition: 'top', // Posición del snackbar
+          verticalPosition: 'top', 
         });
       }
     }
@@ -70,6 +67,6 @@ export default class LoginComponent {
   
 
   registrar() {
-    this.router.navigate(['/welcome']);
+    this.router.navigate(['/sidebar']);
   }
 }

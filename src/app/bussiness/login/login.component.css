@@ -4,7 +4,7 @@
   align-items: center;
 }
 
-.example-card {/*listo*/
+.example-card {
     max-width: 400px;
     padding: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -12,13 +12,13 @@
     background-color: #f5f5f5;
     justify-content: center;
   }
-  /*listo*/
+  
   .container {
-    background: linear-gradient(to bottom, #ffcf68, #ffba89); /* Degradado de amarillo (#FFD700) a café (#8B4513) */
-    height: 100vh; /* Asegura que cubra toda la altura de la pantalla */
-    display: flex; /* Centra el contenido */
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
+    background: linear-gradient(to bottom, #ffcf68, #ffba89); 
+    height: 100vh; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
     text-align: center;
   }
   
@@ -34,10 +34,9 @@
     margin-bottom: 10px;
   }
   
-
   .button-container {
     display: flex;
-    justify-content: center; /* Centra el botón */
+    justify-content: center; 
     width: 100%;
   }
 
@@ -55,12 +54,6 @@
     cursor: pointer;
   }
   
-  
-  /* Cambiar el color de la barra indicadora */
-.mat-tab-group .mat-ink-bar {
-  background-color: #8b4513; /* Café oscuro */
-  height: 4px; /* Ajustar el grosor de la barra */
-}
 
   
   
