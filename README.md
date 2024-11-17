@@ -8,7 +8,6 @@ Este proyecto implementa un sistema de inicio de sesión que consume una API ext
 ## **1. Servicio `UserService`**
 
 El servicio `UserService` se encarga de interactuar con la API externa para obtener la lista de usuarios.
-
 ```typescript
 @Injectable({
   providedIn: 'root'
@@ -18,23 +17,24 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  // Obtiene la lista de usuarios desde la API
   getUsers() {
     return this.http.get<any[]>(this.apiUrl);
   }
-}```
-**API utilizada:** https://api.escuelajs.co/api/v1/users
-**Método implementado:** getUsers (realiza una solicitud GET para obtener todos los usuarios).
+}
+```
+
 ## Componente LoginComponent
 El componente LoginComponent utiliza el servicio UserService para autenticar usuarios.
 Al inicializarse, el componente obtiene la lista de usuarios desde la API.
+
 ```typescript
 ngOnInit(): void {
   this.userservice.getUsers().subscribe((data) => {
     this.user = Object.values(data);
     console.log(this.user);
   });
-}```
+}
+```
 ## Método iniciarSesion
 Valida las credenciales del usuario ingresadas en el formulario contra los datos obtenidos de la API.
 ```typescript
@@ -53,15 +53,16 @@ iniciarSesion() {
       verticalPosition: 'top', 
     });
   }
-  }```
+  }
+```
 -  **Búsqueda de usuario**: Se utiliza el método ``find`` para buscar un usuario en la lista que coincida con las credenciales ingresadas.
 - **Resultado:**
 Si el usuario existe, se redirige al componente sidebar.
 Si el usuario no existe, se muestra un mensaje de error con ``MatSnackBar``.
 
 ## Interfaz de Usuario (HTML)
-El formulario de inicio de sesión permite al usuario ingresar sus credenciales. Los datos ingresados se enlazan a las variables** username** y **password** mediante ``[(ngModel)].``
-```typescript
+El formulario de inicio de sesión permite al usuario ingresar sus credenciales. Los datos ingresados se enlazan a las variables **username** y **password** mediante ``[(ngModel)].``
+```html
 <mat-form-field class="field">
   <mat-label>Correo electrónico</mat-label>
   <input [(ngModel)]="username" type="email" matInput placeholder="Ingresa tu correo">
@@ -78,5 +79,5 @@ El formulario de inicio de sesión permite al usuario ingresar sus credenciales.
   <button class="mat-button button" (click)="iniciarSesion()">Iniciar sesión</button>
 </div>
 ```
-Cuando el usuario hace clic en el botón "Iniciar sesión", se ejecuta el método iniciarSesion.
+Cuando el usuario hace clic en el botón "Iniciar sesión", se ejecuta el método iniciarSesion para ingresar al sistema.
 
