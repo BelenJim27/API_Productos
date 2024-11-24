@@ -6,7 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';  // Importa CommonModule
+import { CommonModule } from '@angular/common';  
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -34,8 +34,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export default class LoginComponent {
-  
-  
+   
   constructor(private router: Router, private userservice: UserService, private snackBar: MatSnackBar) {}
 
     username='';
@@ -53,6 +52,9 @@ export default class LoginComponent {
       ); 
       if (UsuarioExistente) {
         console.log("Login exitoso");
+        this.userservice.setLoggedInUser(UsuarioExistente); 
+        localStorage.setItem('authToken', JSON.stringify(UsuarioExistente)); 
+
         this.router.navigate(['/sidebar']);
       } else {
         console.log("Usuario no encontrado");

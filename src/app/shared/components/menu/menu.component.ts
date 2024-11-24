@@ -6,6 +6,7 @@ import { signal } from '@angular/core';
 import {MatListModule} from '@angular/material/list'
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { UserService } from '../../../services/user.service';
 
 export type MenuItem={
   icon:string;
@@ -21,16 +22,27 @@ export type MenuItem={
   styleUrl: './menu.component.css'
 })
 export class MenuComponent {
+  constructor(private userService: UserService) {}
+
+  @Input() userImage: string | null = null; // Imagen del usuario logueado
+  loggedInUser: any = null;
+
   sideNavCollapsed=signal(false);
   @Input() set collapsed(value: boolean) {
     this.sideNavCollapsed.set(value);
   };
   menuItems = signal<MenuItem[]>([
+    {icon: 'shopping_cart',label: 'Productos',link: '/sidebar/productos' },
     { icon: 'home', label: 'Dashboard', link: '/sidebar/dashboard' },
     { icon: 'person', label: 'usuarios', link: '/sidebar/usuarios' },
-    { icon: 'tablas', label: 'Tablas', link: '/sidebar/tablas' },
   ]);
   
 
   profilePicsSize=computed(()=>this.sideNavCollapsed()? '32px' : '100px');
+
+  ngOnInit(): void {
+    this.loggedInUser = this.userService.getLoggedInUser();
+    console.log('Usuario logueado:', this.loggedInUser); 
+
+  }
 }

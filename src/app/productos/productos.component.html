@@ -1,0 +1,56 @@
+<div class="container mt-5">
+  <div class="table-container">
+    <h2>Lista de productos</h2>
+    
+    <div class="search-bar">
+      <div class="input-container">
+        <span class="search-icon">🔍</span>
+        <input 
+          type="text" 
+          class="form-control search-input" 
+          placeholder="Buscar productos..." 
+          [(ngModel)]="searchQuery" 
+          (input)="filterProducts()">
+      </div>
+    </div>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>#</th> 
+          <th>Imagen</th>
+          <th>Título</th>
+          <th>Precio</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of paginatedProducts; let i = index">
+          <td>{{ i + 1 + (currentPage * pageSize) }}</td> 
+          <td><img [src]="product.image" alt="{{ product.title }}" class="img"></td>
+          <td>{{ product.title }}</td>
+          <td>${{ product.price }}</td>
+          <td class="botoncontent">
+            <button class="btn btn-info btn-sm button" (click)="viewProductInfo(product)">
+              <mat-icon>info</mat-icon>
+            </button>
+            <button class="btn btn-warning btn-sm button" (click)="editProduct(product)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button class="button" (click)="deleteProduct(product.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+  showFirstLastButtons
+  [length]="filteredProducts.length" 
+  [pageSize]="pageSize"
+  (page)="onPageChange($event)">
+</mat-paginator>
+
+  </div>
+</div>
